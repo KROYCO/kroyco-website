@@ -362,6 +362,21 @@
       border-radius: 24px;
       background: rgba(7, 11, 17, 0.6);
       border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .logo-panel::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(154,215,255,0.28) 0%, rgba(98,240,200,0.18) 38%, transparent 72%);
+      filter: blur(18px);
+      animation: heroGlow 5.5s ease-in-out infinite;
+      z-index: 0;
     }
 
     .logo-panel img {
@@ -369,11 +384,13 @@
       max-height: 150px;
       object-fit: contain;
       filter: drop-shadow(0 10px 30px rgba(0,0,0,0.18));
+      position: relative;
+      z-index: 1;
     }
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 14px;
       position: relative;
       z-index: 1;
@@ -571,6 +588,13 @@
       50% { transform: scale(1.35); opacity: 1; }
     }
 
+    @keyframes heroGlow {
+      0%, 100% { transform: scale(0.92); opacity: 0.72; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+      50% { transform: scale(1.35); opacity: 1; }
+    }
+
     @media (max-width: 980px) {
       .founder-section {
         grid-template-columns: 1fr;
@@ -637,7 +661,7 @@
 
       .nav-links {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
         width: 100%;
       }
@@ -743,6 +767,7 @@
       <nav class="nav-links">
         <a href="#services">Services</a>
         <a href="#approach">Approach</a>
+        <a href="#leadership">Leadership</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -758,8 +783,9 @@
             KROYCO is a strategic advisory firm specializing in enterprise transformation communications and organizational change leadership. We partner with executive teams and transformation offices to guide complex modernization initiatives — translating strategy into clear narratives, aligned leadership, and measurable adoption across global organizations.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="mailto:hello@kroyco.com">hello@kroyco.com</a>
-            <a class="btn btn-secondary" href="#services">Explore Services</a>
+            <a class="btn btn-primary" href="#services">Explore Services</a>
+            <a class="btn btn-secondary" href="#approach">View Approach</a>
+            <a class="btn btn-secondary" href="#contact">Get in Touch</a>
           </div>
         </div>
 
@@ -919,7 +945,7 @@
               </div>
             </div>
             <div class="cta-row">
-              <a class="btn btn-secondary" href="https://www.linkedin.com/company/kroyco-advisory/" target="_blank" rel="noopener noreferrer">Company LinkedIn</a>
+              <a class="btn btn-secondary" href="https://www.linkedin.com/in/alexkroytor/" target="_blank" rel="noopener noreferrer">Personal LinkedIn</a>
             </div>
           </div>
         </div>
