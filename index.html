@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -392,152 +392,6 @@
       filter: drop-shadow(0 10px 30px rgba(0,0,0,0.18));
       position: relative;
       z-index: 1;
-    }
-
-    .hero-diagram {
-      position: relative;
-      width: 100%;
-      max-width: 500px;
-      min-height: 380px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      isolation: isolate;
-    }
-
-    .hero-diagram::before {
-      content: "";
-      position: absolute;
-      inset: 6% 4%;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at center, rgba(98,240,200,0.16), transparent 32%),
-        radial-gradient(circle at center, rgba(154,215,255,0.10), transparent 58%);
-      filter: blur(12px);
-      z-index: 0;
-    }
-
-    .diagram-web,
-    .diagram-rings,
-    .diagram-cross {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .diagram-web {
-      opacity: 0.22;
-      background:
-        repeating-linear-gradient(14deg, transparent 0 22px, rgba(154,215,255,0.12) 23px 24px, transparent 25px 48px),
-        repeating-linear-gradient(-18deg, transparent 0 26px, rgba(98,240,200,0.08) 27px 28px, transparent 29px 56px);
-      mask-image: radial-gradient(circle at center, black 46%, transparent 88%);
-      -webkit-mask-image: radial-gradient(circle at center, black 46%, transparent 88%);
-      z-index: 0;
-    }
-
-    .diagram-rings {
-      z-index: 0;
-    }
-
-    .diagram-rings span {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      border-radius: 50%;
-      border: 2px solid rgba(182, 231, 245, 0.16);
-      transform: translate(-50%, -50%);
-    }
-
-    .diagram-rings span:nth-child(1) { width: 180px; height: 180px; }
-    .diagram-rings span:nth-child(2) { width: 260px; height: 260px; }
-    .diagram-rings span:nth-child(3) { width: 340px; height: 340px; border-color: rgba(98,240,200,0.14); }
-    .diagram-rings span:nth-child(4) { width: 430px; height: 430px; border-color: rgba(154,215,255,0.10); }
-
-    .diagram-cross::before,
-    .diagram-cross::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      background: linear-gradient(90deg, rgba(154,215,255,0), rgba(201,237,245,0.42), rgba(154,215,255,0));
-      transform: translate(-50%, -50%);
-      z-index: 1;
-    }
-
-    .diagram-cross::before {
-      width: 350px;
-      height: 2px;
-    }
-
-    .diagram-cross::after {
-      width: 2px;
-      height: 350px;
-      background: linear-gradient(180deg, rgba(154,215,255,0), rgba(201,237,245,0.42), rgba(154,215,255,0));
-    }
-
-    .diagram-core {
-      position: relative;
-      width: 172px;
-      height: 172px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: radial-gradient(circle at 28% 24%, rgba(227,247,255,0.98), rgba(122,220,214,0.92) 70%);
-      border: 2px solid rgba(228, 248, 250, 0.55);
-      box-shadow: 0 18px 50px rgba(0,0,0,0.24), inset 0 1px 0 rgba(255,255,255,0.45);
-      z-index: 3;
-      color: #1b2b35;
-      font-weight: 800;
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      line-height: 1.15;
-      text-transform: uppercase;
-      padding: 22px;
-    }
-
-    .diagram-node {
-      position: absolute;
-      min-width: 150px;
-      padding: 18px 22px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, rgba(78,89,109,0.92), rgba(56,66,84,0.92));
-      border: 2px solid rgba(255,255,255,0.12);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.08);
-      color: #f5f7fa;
-      font-size: 0.92rem;
-      font-weight: 700;
-      line-height: 1;
-      text-align: center;
-      z-index: 3;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .diagram-node.top {
-      top: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .diagram-node.right {
-      right: 6px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .diagram-node.bottom {
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .diagram-node.left {
-      left: 6px;
-      top: 50%;
-      transform: translateY(-50%);
     }
 
     .tm-stats {
@@ -998,23 +852,6 @@
         </div>
 
         <aside class="hero-card" aria-label="KROYCO brand panel">
-          <div class="logo-panel">
-            <div class="hero-diagram" aria-hidden="true">
-              <div class="diagram-web"></div>
-              <div class="diagram-rings">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div class="diagram-cross"></div>
-              <div class="diagram-node top">Strategy</div>
-              <div class="diagram-node right">Leadership</div>
-              <div class="diagram-node bottom">Adoption</div>
-              <div class="diagram-node left">Impact</div>
-              <div class="diagram-core">Transformation</div>
-            </div>
-          </div>
           <div class="tm-stats">
             <div class="stat">
               <strong>Transformation Comms</strong>
