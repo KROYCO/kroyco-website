@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KROYCO | Strategic Communications & Business Transformation</title>
-  <meta name="description" content="KROYCO helps organizations strengthen communications, sharpen positioning, and lead change with clarity." />
-  <link rel="icon" type="image/png" href="favicon - large.png" />
+  <title>KROYCO | Enterprise Transformation Communications & Change Leadership</title>
+  <meta name="description" content="KROYCO is a strategic advisory firm specializing in enterprise transformation communications, organizational change leadership, executive alignment, and digital transformation enablement." />
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-large.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./favicon-large.png" />
+  <link rel="apple-touch-icon" href="./favicon-large.png" />
   <style>
     :root {
       --bg: #0b0f14;
@@ -230,9 +232,33 @@
       gap: 24px;
       color: var(--muted);
       font-size: 0.95rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      padding: 8px 0;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease;
+      opacity: 0.9;
     }
 
     .nav-links a:hover { color: var(--text); }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
 
     .hero {
       padding: 84px 0 64px;
@@ -397,6 +423,18 @@
       box-shadow: var(--shadow);
     }
 
+    .services .card {
+      min-height: 200px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
     .card h3 {
       margin: 0 0 8px;
       font-size: 1.2rem;
@@ -433,10 +471,67 @@
       align-items: stretch;
     }
 
-    .contact-list {
+    .founder-section {
       display: grid;
-      gap: 14px;
+      grid-template-columns: 360px 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .founder-photo {
+      overflow: hidden;
+      min-height: 100%;
+      padding: 0;
+    }
+
+    .founder-photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .founder-copy {
+      display: grid;
+      gap: 18px;
+    }
+
+    .founder-header h3 {
+      margin: 0 0 6px;
+      font-size: 1.8rem;
+      letter-spacing: -0.03em;
+    }
+
+    .founder-role {
+      color: var(--accent);
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .founder-copy p {
       color: var(--muted);
+      margin: 0;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .impact-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .impact-item strong {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+      color: var(--text);
     }
 
     .contact-list strong {
@@ -477,6 +572,18 @@
     }
 
     @media (max-width: 980px) {
+      .founder-section {
+        grid-template-columns: 1fr;
+      }
+
+      .founder-photo img {
+        min-height: 320px;
+        max-height: 520px;
+      }
+
+      .impact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
       .hero-grid,
       .contact-panel,
       .services,
@@ -494,28 +601,121 @@
         height: 560px;
         opacity: 0.24;
       }
-    }
 
-    @media (max-width: 700px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 14px 0;
+      .hero {
+        padding: 64px 0 44px;
+      }
+
+      .hero-grid {
+        gap: 20px;
       }
 
       .nav-links {
-        flex-wrap: wrap;
-        gap: 14px;
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-header {
+        position: static;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px 0 18px;
+        gap: 12px;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .nav-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 42px;
+        padding: 10px 12px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .nav-links a::after {
+        display: none;
       }
 
       .hero {
-        padding-top: 48px;
+        padding-top: 28px;
       }
 
       .background-globe {
         width: 400px;
         height: 400px;
         top: 36%;
+        left: 50%;
+      }
+
+      .container {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .hero-card,
+      .card {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: clamp(2.1rem, 11vw, 3.2rem);
+        line-height: 0.98;
+      }
+
+      .hero p,
+      .section-copy,
+      .card p,
+      .contact-list {
+        font-size: 0.98rem;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .cta-row .btn {
+        width: 100%;
+      }
+
+      .logo-panel {
+        min-height: 160px;
+        padding: 18px;
+      }
+
+      .logo-panel img {
+        max-height: 110px;
+      }
+
+      .section {
+        padding: 28px 0 18px;
+      }
+
+      .services,
+      .process,
+      .stats,
+      .contact-panel {
+        gap: 14px;
       }
     }
   </style>
@@ -537,7 +737,7 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="KROYCO Home">
-        <img src="favicon - large.png" alt="KROYCO icon" />
+        <img src="./favicon-large.png" alt="KROYCO icon" />
         <span>KROYCO</span>
       </a>
       <nav class="nav-links">
@@ -552,11 +752,10 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Strategic Communications • Advisory • Transformation</span>
-          <h1>Sharper messaging.<br />Stronger positioning.<br />Clearer impact.</h1>
+          <span class="eyebrow">Enterprise Transformation Communications • Change Leadership • Executive Alignment</span>
+          <h1>Clear transformation narratives.<br />Aligned leadership.<br />Lasting adoption.</h1>
           <p>
-            KROYCO helps leaders and organizations communicate with confidence, strengthen brand presence,
-            and navigate complex change with clarity. Built for modern businesses that need smart strategy and polished execution.
+            KROYCO is a strategic advisory firm specializing in enterprise transformation communications and organizational change leadership. We partner with executive teams and transformation offices to guide complex modernization initiatives — translating strategy into clear narratives, aligned leadership, and measurable adoption across global organizations.
           </p>
           <div class="cta-row">
             <a class="btn btn-primary" href="mailto:hello@kroyco.com">hello@kroyco.com</a>
@@ -566,20 +765,20 @@
 
         <aside class="hero-card" aria-label="KROYCO brand panel">
           <div class="logo-panel">
-            <img src="full logo - 8k.png" alt="KROYCO logo" />
+            <img src="./full-logo-8k.png" alt="KROYCO logo" />
           </div>
           <div class="stats">
             <div class="stat">
-              <strong>Brand Strategy</strong>
-              <span>Positioning, voice, and presence that feels elevated and cohesive.</span>
+              <strong>Transformation Comms</strong>
+              <span>Clear communication strategies that connect enterprise transformation goals to workforce understanding and action.</span>
             </div>
             <div class="stat">
-              <strong>Executive Comms</strong>
-              <span>Thoughtful messaging for leaders, launches, and high-visibility moments.</span>
+              <strong>Executive Alignment</strong>
+              <span>Leadership messaging and engagement that keeps sponsors, stakeholders, and change agents moving in sync.</span>
             </div>
             <div class="stat">
-              <strong>Transformation</strong>
-              <span>Communications support that keeps change aligned and understandable.</span>
+              <strong>Adoption Strategy</strong>
+              <span>Structured approaches that strengthen stakeholder buy-in, activation, and sustained business impact.</span>
             </div>
           </div>
         </aside>
@@ -588,22 +787,34 @@
 
     <section class="section" id="services">
       <div class="container">
-        <h2 class="section-title">What KROYCO delivers</h2>
+        <h2 class="section-title">Core areas of expertise</h2>
         <p class="section-copy">
-          Flexible consulting support for organizations that need communications, content, and strategic guidance without adding unnecessary complexity.
+          KROYCO supports large-scale digital transformation, enterprise technology adoption, and operating model shifts by activating leadership, aligning stakeholders, and helping organizations realize measurable transformation outcomes.
         </p>
         <div class="services">
           <article class="card">
-            <h3>Strategic Communications</h3>
-            <p>Messaging frameworks, executive narratives, internal communications, and stakeholder-ready content that moves work forward.</p>
+            <h3>Enterprise Transformation Communications</h3>
+            <p>Communication strategies and narrative frameworks that help large-scale transformation initiatives land clearly across complex organizations.</p>
           </article>
           <article class="card">
-            <h3>Brand & Positioning</h3>
-            <p>Sharper company storytelling, stronger brand expression, and clearer market presence across web, social, and business materials.</p>
+            <h3>Organizational Change Architecture</h3>
+            <p>Change frameworks, stakeholder planning, and structured engagement models that support enterprise readiness and organizational adoption.</p>
           </article>
           <article class="card">
-            <h3>Transformation Support</h3>
-            <p>Communications planning for change initiatives, launches, organizational shifts, and high-priority business moments.</p>
+            <h3>Executive Engagement & Leadership Alignment</h3>
+            <p>Executive storytelling, sponsor messaging, and leadership alignment strategies that create clarity, trust, and visible commitment.</p>
+          </article>
+          <article class="card">
+            <h3>Transformation Adoption Strategy</h3>
+            <p>Adoption roadmaps, stakeholder activation plans, and reinforcement strategies that help transformation take hold across the business.</p>
+          </article>
+          <article class="card">
+            <h3>Digital Transformation Enablement</h3>
+            <p>Communications and change support for enterprise technology modernization, platform adoption, and operating model evolution.</p>
+          </article>
+          <article class="card">
+            <h3>Strategic Messaging & Executive Storytelling</h3>
+            <p>High-impact executive narratives, transformation messaging, and leadership-ready content that connect strategy to action.</p>
           </article>
         </div>
       </div>
@@ -611,30 +822,30 @@
 
     <section class="section" id="approach">
       <div class="container">
-        <h2 class="section-title">A simple, modern approach</h2>
+        <h2 class="section-title">How KROYCO drives transformation impact</h2>
         <p class="section-copy">
-          KROYCO blends polished branding with practical execution, so your business looks credible and communicates clearly from day one.
+          Our approach is built for transformation offices and executive teams that need strategy translated into action — with communications, leadership engagement, and adoption planning working together from the start.
         </p>
         <div class="process">
           <article class="card">
             <span class="step-number">1</span>
             <h3>Assess</h3>
-            <p>Review goals, audience needs, brand gaps, and communication priorities.</p>
+            <p>Evaluate transformation objectives, stakeholder dynamics, leadership needs, and change risks.</p>
           </article>
           <article class="card">
             <span class="step-number">2</span>
-            <h3>Shape</h3>
-            <p>Refine narrative, visual direction, and key messaging for consistency.</p>
+            <h3>Align</h3>
+            <p>Build leadership alignment, define core messaging, and create the narrative architecture for transformation.</p>
           </article>
           <article class="card">
             <span class="step-number">3</span>
-            <h3>Build</h3>
-            <p>Create polished content, digital assets, and presentation-ready materials.</p>
+            <h3>Activate</h3>
+            <p>Deploy executive communications, stakeholder engagement plans, and transformation adoption strategies.</p>
           </article>
           <article class="card">
             <span class="step-number">4</span>
-            <h3>Launch</h3>
-            <p>Put the refreshed experience live with confidence and a cleaner brand presence.</p>
+            <h3>Sustain</h3>
+            <p>Reinforce messaging, measure adoption, and support the behaviors needed for lasting business impact.</p>
           </article>
         </div>
       </div>
@@ -643,9 +854,9 @@
     <section class="section" id="contact">
       <div class="container contact-panel">
         <div class="card">
-          <h2 class="section-title">Ready to refresh your presence?</h2>
+          <h2 class="section-title">Ready to strengthen transformation outcomes?</h2>
           <p class="section-copy" style="margin-bottom:0;">
-            Whether you need a cleaner website, stronger messaging, or polished brand materials, KROYCO can help you present your business with more clarity and confidence.
+            KROYCO helps executive teams and transformation offices communicate change with clarity, align leadership, and drive adoption across complex enterprise environments.
           </p>
         </div>
         <div class="card contact-list">
@@ -657,9 +868,59 @@
             <strong>LinkedIn</strong>
             <a href="https://www.linkedin.com/company/kroyco-advisory/" target="_blank" rel="noopener noreferrer">KROYCO Advisory on LinkedIn</a>
           </div>
-          <div>
-            <strong>Location</strong>
-            <span>United States</span>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="leadership">
+      <div class="container">
+        <h2 class="section-title">Leadership</h2>
+        <p class="section-copy">
+          KROYCO was founded to help organizations communicate transformation with clarity, align leadership, and drive real adoption across complex enterprise environments.
+        </p>
+        <div class="founder-section">
+          <div class="card founder-photo">
+            <img src="./alex-kroytor.jpg" alt="Portrait of Alex Kroytor, founder of KROYCO" />
+          </div>
+          <div class="card founder-copy">
+            <div class="founder-header">
+              <h3>Alex Kroytor</h3>
+              <p class="founder-role">Founder & Strategic Advisor</p>
+            </div>
+            <p>
+              Alex Kroytor is a transformation communications and organizational change leader with more than 15 years of experience guiding enterprise modernization initiatives across global organizations.
+            </p>
+            <p>
+              He specializes in helping executive teams translate complex transformation strategies into clear narratives, aligned leadership engagement, and scalable adoption frameworks that drive measurable business outcomes.
+            </p>
+            <p>
+              Alex has advised transformation offices and executive sponsors across industries including energy, media, retail, technology, and consulting. His work has supported enterprise programs impacting organizations of up to 250,000 employees and global workforces across the US, EMEA, and APAC.
+            </p>
+            <p>
+              His expertise spans enterprise transformation communications, organizational change architecture, executive engagement strategy, and digital transformation enablement — helping organizations ensure modernization initiatives are clearly understood, effectively activated, and sustained across the business.
+            </p>
+            <div class="impact-grid">
+              <div class="impact-item">
+                <strong>$2M program</strong>
+                <span>Enterprise modernization initiative spanning 8 global workstreams and 7,500 stakeholders.</span>
+              </div>
+              <div class="impact-item">
+                <strong>35,000 employees</strong>
+                <span>Global transformation engagement across teams in the US, EMEA, and APAC.</span>
+              </div>
+              <div class="impact-item">
+                <strong>Up to 250,000</strong>
+                <span>Programs supported across highly complex global organizations and multiple clients.</span>
+              </div>
+              <div class="impact-item">
+                <strong>80%–92% adoption</strong>
+                <span>Measured adoption outcomes across enterprise modernization and transformation initiatives.</span>
+              </div>
+            </div>
+            <div class="cta-row">
+              <a class="btn btn-secondary" href="https://www.linkedin.com/company/kroyco-advisory/" target="_blank" rel="noopener noreferrer">Company LinkedIn</a>
+            </div>
           </div>
         </div>
       </div>
