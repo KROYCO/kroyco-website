@@ -1,266 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KROYCO | Strategic Communications & Business Transformation</title>
+  <meta name="description" content="KROYCO helps organizations strengthen communications, sharpen positioning, and lead change with clarity." />
+  <link rel="icon" type="image/png" href="favicon - large.png" />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --bg-soft: #121922;
+      --panel: rgba(255,255,255,0.06);
+      --panel-border: rgba(255,255,255,0.12);
+      --text: #f5f7fa;
+      --muted: #b2bdc9;
+      --accent: #9ad7ff;
+      --accent-2: #62f0c8;
+      --max: 1200px;
+      --radius: 24px;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KROYCO | Enterprise Transformation Advisory</title>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-<style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(98,240,200,0.12), transparent 32%),
+        radial-gradient(circle at top right, rgba(154,215,255,0.18), transparent 28%),
+        linear-gradient(180deg, #091019 0%, #0c1118 100%);
+      color: var(--text);
+      line-height: 1.55;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-color:white;
-background:#0f172a;
-}
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(154,215,255,0.08), transparent 18%),
+        radial-gradient(circle at 50% 35%, rgba(98,240,200,0.05), transparent 28%);
+      z-index: 0;
+    }
 
-/* digital background */
+    a { color: inherit; text-decoration: none; }
 
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:
-linear-gradient(rgba(15,23,42,.92), rgba(15,23,42,.92)),
-url("https://images.unsplash.com/photo-1550751827-4bd374c3f58b");
-background-size:cover;
-background-position:center;
-z-index:-1;
-}
+    .background-globe {
+      position: fixed;
+      top: 50%;
+      left: 72%;
+      width: 760px;
+      height: 760px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0.42;
+      z-index: 0;
+      filter: drop-shadow(0 0 50px rgba(154,215,255,0.10));
+    }
 
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-background:#020617;
-border-bottom:1px solid #1e293b;
-}
+    .globe {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(154,215,255,0.18);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.12), transparent 18%),
+        radial-gradient(circle at 50% 50%, rgba(98,240,200,0.08), transparent 48%),
+        radial-gradient(circle at 50% 50%, rgba(154,215,255,0.10), transparent 62%);
+      box-shadow:
+        inset 0 0 70px rgba(154,215,255,0.06),
+        0 0 80px rgba(98,240,200,0.05);
+      animation: floatGlobe 9s ease-in-out infinite;
+    }
 
-.logo{
-display:flex;
-align-items:center;
-gap:14px;
-}
+    .globe::before,
+    .globe::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+    }
 
-.logo img{
-height:42px;
-}
+    .globe::before {
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent 28px,
+          rgba(154,215,255,0.13) 29px,
+          transparent 30px
+        );
+      mask-image: radial-gradient(circle at center, black 62%, transparent 70%);
+      -webkit-mask-image: radial-gradient(circle at center, black 62%, transparent 70%);
+      animation: rotateSlow 22s linear infinite;
+    }
 
-nav a{
-color:#cbd5f5;
-text-decoration:none;
-margin-left:28px;
-font-size:14px;
-}
+    .globe::after {
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 48px,
+          rgba(98,240,200,0.12) 49px,
+          transparent 50px
+        );
+      transform: rotate(12deg) scale(0.92);
+      mask-image: radial-gradient(circle at center, black 62%, transparent 70%);
+      -webkit-mask-image: radial-gradient(circle at center, black 62%, transparent 70%);
+      animation: rotateReverse 28s linear infinite;
+    }
 
-nav a:hover{
-color:white;
-}
+    .orbit,
+    .orbit-two,
+    .orbit-three {
+      position: absolute;
+      inset: 50%;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 50%;
+      transform-origin: center;
+    }
 
-.hero{
-padding:120px 8%;
-max-width:1100px;
-}
+    .orbit {
+      width: 108%;
+      height: 64%;
+      translate: -50% -50%;
+      animation: spinOrbit 18s linear infinite;
+    }
 
-.hero h1{
-font-size:52px;
-line-height:1.2;
-max-width:800px;
-}
+    .orbit-two {
+      width: 94%;
+      height: 94%;
+      translate: -50% -50%;
+      transform: rotate(62deg);
+      animation: spinOrbit 26s linear infinite reverse;
+    }
 
-.hero p{
-font-size:20px;
-color:#cbd5f5;
-margin-top:20px;
-max-width:600px;
-}
+    .orbit-three {
+      width: 70%;
+      height: 112%;
+      translate: -50% -50%;
+      transform: rotate(-28deg);
+      animation: spinOrbit 20s linear infinite;
+    }
 
-.button{
-display:inline-block;
-margin-top:35px;
-padding:14px 28px;
-background:white;
-color:#020617;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-}
+    .node,
+    .node-two,
+    .node-three,
+    .node-four {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 18px rgba(154,215,255,0.5);
+      animation: pulseNode 2.8s ease-in-out infinite;
+    }
 
-.services{
-padding:90px 8%;
-background:#020617;
-}
+    .node { top: 20%; left: 24%; }
+    .node-two { top: 34%; right: 18%; animation-delay: 0.4s; }
+    .node-three { bottom: 24%; left: 30%; animation-delay: 0.8s; }
+    .node-four { bottom: 18%; right: 28%; animation-delay: 1.2s; }
 
-.services h2{
-font-size:32px;
-margin-bottom:40px;
-}
+    .connection,
+    .connection-two,
+    .connection-three {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(154,215,255,0.55), transparent);
+      transform-origin: left center;
+      opacity: 0.8;
+    }
 
-.service-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
+    .connection { top: 24%; left: 28%; width: 40%; transform: rotate(18deg); }
+    .connection-two { top: 40%; left: 26%; width: 48%; transform: rotate(-12deg); }
+    .connection-three { top: 62%; left: 34%; width: 30%; transform: rotate(22deg); }
 
-.card{
-background:#0f172a;
-padding:30px;
-border-radius:12px;
-border:1px solid #1e293b;
-}
+    .container,
+    .site-header,
+    main,
+    .site-footer {
+      position: relative;
+      z-index: 1;
+    }
 
-.card p{
-color:#cbd5f5;
-}
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
 
-.about{
-padding:100px 8%;
-max-width:900px;
-}
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(9, 16, 25, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
 
-.about p{
-color:#cbd5f5;
-font-size:18px;
-line-height:1.6;
-}
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 74px;
+      gap: 16px;
+    }
 
-.contact{
-padding:90px 8%;
-background:#020617;
-text-align:center;
-}
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
 
-.contact p{
-color:#cbd5f5;
-}
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
+    }
 
-.contact a{
-color:white;
-font-weight:bold;
-text-decoration:none;
-}
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
 
-footer{
-padding:30px;
-text-align:center;
-border-top:1px solid #1e293b;
-color:#64748b;
-}
+    .nav-links a:hover { color: var(--text); }
 
-</style>
+    .hero {
+      padding: 84px 0 64px;
+    }
 
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--accent);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 5vw, 4.9rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 700px;
+      margin: 22px 0 30px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #061018;
+    }
+
+    .btn-secondary {
+      border-color: rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+      border: 1px solid var(--panel-border);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      min-height: 440px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(98,240,200,0.18), transparent 22%),
+        radial-gradient(circle at 80% 10%, rgba(154,215,255,0.24), transparent 24%);
+      pointer-events: none;
+    }
+
+    .logo-panel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(7, 11, 17, 0.6);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo-panel img {
+      max-width: 100%;
+      max-height: 150px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.18));
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+
+    .section {
+      padding: 34px 0 24px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.02;
+      margin: 0 0 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 26px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step-number {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      align-items: center;
+      justify-content: center;
+      background: rgba(154,215,255,0.14);
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      color: var(--muted);
+    }
+
+    .contact-list strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .site-footer {
+      padding: 30px 0 50px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes rotateReverse {
+      from { transform: rotate(12deg) scale(0.92) rotate(360deg); }
+      to { transform: rotate(12deg) scale(0.92) rotate(0deg); }
+    }
+
+    @keyframes floatGlobe {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes spinOrbit {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @keyframes pulseNode {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.35); opacity: 1; }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .contact-panel,
+      .services,
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .background-globe {
+        left: 50%;
+        width: 560px;
+        height: 560px;
+        opacity: 0.24;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .background-globe {
+        width: 400px;
+        height: 400px;
+        top: 36%;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="background-globe" aria-hidden="true">
+    <div class="globe"></div>
+    <div class="orbit"></div>
+    <div class="orbit-two"></div>
+    <div class="orbit-three"></div>
+    <div class="node"></div>
+    <div class="node-two"></div>
+    <div class="node-three"></div>
+    <div class="node-four"></div>
+    <div class="connection"></div>
+    <div class="connection-two"></div>
+    <div class="connection-three"></div>
+  </div>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="KROYCO Home">
+        <img src="favicon - large.png" alt="KROYCO icon" />
+        <span>KROYCO</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Strategic Communications • Advisory • Transformation</span>
+          <h1>Sharper messaging.<br />Stronger positioning.<br />Clearer impact.</h1>
+          <p>
+            KROYCO helps leaders and organizations communicate with confidence, strengthen brand presence,
+            and navigate complex change with clarity. Built for modern businesses that need smart strategy and polished execution.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="mailto:hello@kroyco.com">hello@kroyco.com</a>
+            <a class="btn btn-secondary" href="#services">Explore Services</a>
+          </div>
+        </div>
 
-<div class="logo">
-<img src="Logo.jpg" alt="KROYCO logo">
-<strong>KROYCO</strong>
-</div>
+        <aside class="hero-card" aria-label="KROYCO brand panel">
+          <div class="logo-panel">
+            <img src="full logo - 8k.png" alt="KROYCO logo" />
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <strong>Brand Strategy</strong>
+              <span>Positioning, voice, and presence that feels elevated and cohesive.</span>
+            </div>
+            <div class="stat">
+              <strong>Executive Comms</strong>
+              <span>Thoughtful messaging for leaders, launches, and high-visibility moments.</span>
+            </div>
+            <div class="stat">
+              <strong>Transformation</strong>
+              <span>Communications support that keeps change aligned and understandable.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-<nav>
-<a href="#services">Services</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</nav>
+    <section class="section" id="services">
+      <div class="container">
+        <h2 class="section-title">What KROYCO delivers</h2>
+        <p class="section-copy">
+          Flexible consulting support for organizations that need communications, content, and strategic guidance without adding unnecessary complexity.
+        </p>
+        <div class="services">
+          <article class="card">
+            <h3>Strategic Communications</h3>
+            <p>Messaging frameworks, executive narratives, internal communications, and stakeholder-ready content that moves work forward.</p>
+          </article>
+          <article class="card">
+            <h3>Brand & Positioning</h3>
+            <p>Sharper company storytelling, stronger brand expression, and clearer market presence across web, social, and business materials.</p>
+          </article>
+          <article class="card">
+            <h3>Transformation Support</h3>
+            <p>Communications planning for change initiatives, launches, organizational shifts, and high-priority business moments.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-</header>
+    <section class="section" id="approach">
+      <div class="container">
+        <h2 class="section-title">A simple, modern approach</h2>
+        <p class="section-copy">
+          KROYCO blends polished branding with practical execution, so your business looks credible and communicates clearly from day one.
+        </p>
+        <div class="process">
+          <article class="card">
+            <span class="step-number">1</span>
+            <h3>Assess</h3>
+            <p>Review goals, audience needs, brand gaps, and communication priorities.</p>
+          </article>
+          <article class="card">
+            <span class="step-number">2</span>
+            <h3>Shape</h3>
+            <p>Refine narrative, visual direction, and key messaging for consistency.</p>
+          </article>
+          <article class="card">
+            <span class="step-number">3</span>
+            <h3>Build</h3>
+            <p>Create polished content, digital assets, and presentation-ready materials.</p>
+          </article>
+          <article class="card">
+            <span class="step-number">4</span>
+            <h3>Launch</h3>
+            <p>Put the refreshed experience live with confidence and a cleaner brand presence.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<section class="hero">
+    <section class="section" id="contact">
+      <div class="container contact-panel">
+        <div class="card">
+          <h2 class="section-title">Ready to refresh your presence?</h2>
+          <p class="section-copy" style="margin-bottom:0;">
+            Whether you need a cleaner website, stronger messaging, or polished brand materials, KROYCO can help you present your business with more clarity and confidence.
+          </p>
+        </div>
+        <div class="card contact-list">
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:hello@kroyco.com">hello@kroyco.com</a>
+          </div>
+          <div>
+            <strong>LinkedIn</strong>
+            <a href="https://www.linkedin.com/company/kroyco-advisory/" target="_blank" rel="noopener noreferrer">KROYCO Advisory on LinkedIn</a>
+          </div>
+          <div>
+            <strong>Location</strong>
+            <span>United States</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<h1>
-Enterprise Transformation Communications & Change Leadership Advisory
-</h1>
-
-<p>
-KROYCO helps organizations navigate complex transformation by delivering clear communications, strategic change leadership, and executive-level advisory support.
-</p>
-
-<a class="button" href="#contact">Start a Conversation</a>
-
-</section>
-
-<section class="services" id="services">
-
-<h2>Services</h2>
-
-<div class="service-grid">
-
-<div class="card">
-<h3>Transformation Communications</h3>
-<p>
-Strategic messaging frameworks that align leadership, stakeholders, and employees during enterprise transformation.
-</p>
-</div>
-
-<div class="card">
-<h3>Change Leadership Advisory</h3>
-<p>
-Practical guidance that helps leaders drive adoption and organizational alignment during major change initiatives.
-</p>
-</div>
-
-<div class="card">
-<h3>Executive Communications</h3>
-<p>
-Clear and impactful communications for executives leading modernization, restructuring, and enterprise programs.
-</p>
-</div>
-
-<div class="card">
-<h3>Program Enablement</h3>
-<p>
-Communication structures and leadership materials that keep transformation initiatives visible and understood.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="about" id="about">
-
-<h2>About KROYCO</h2>
-
-<p>
-KROYCO is a boutique advisory focused on communications and change leadership for enterprise transformation. We help organizations communicate complex change with clarity, align stakeholders with confidence, and support leaders through critical moments of transformation.
-</p>
-
-</section>
-
-<section class="contact" id="contact">
-
-<h2>Contact</h2>
-
-<p>
-For inquiries regarding transformation communications or change leadership advisory:
-</p>
-
-<p>
-<a href="mailto:hello@kroyco.com">hello@kroyco.com</a>
-</p>
-
-<p>
-LinkedIn:<br>
-<a href="https://www.linkedin.com/company/kroyco-advisory/" target="_blank">
-KROYCO Advisory
-</a>
-</p>
-
-</section>
-
-<footer>
-
-© 2026 KROYCO Advisory
-
-</footer>
-
+  <footer class="site-footer">
+    <div class="container">
+      © 2026 KROYCO. All rights reserved.
+    </div>
+  </footer>
 </body>
 </html>
