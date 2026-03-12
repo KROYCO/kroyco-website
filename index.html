@@ -221,13 +221,14 @@
       display: inline-flex;
       align-items: center;
       gap: 14px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-weight: 800;
+      font-size: 1.45rem;
+      letter-spacing: 0.04em;
     }
 
     .brand img {
-      width: 42px;
-      height: 42px;
+      width: 48px;
+      height: 48px;
       object-fit: contain;
       display: block;
     }
@@ -396,11 +397,24 @@
     .transformation-model {
       position: relative;
       width: 100%;
-      min-height: 220px;
+      min-height: 330px;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      justify-items: center;
+      align-items: center;
+      gap: 24px;
+      z-index: 1;
+    }
+
+    .tm-graphic {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 1;
     }
 
     .tm-core {
@@ -437,10 +451,10 @@
       white-space: nowrap;
     }
 
-    .tm-node-1 { top: 8px; left: 50%; transform: translateX(-50%); }
-    .tm-node-2 { right: 10px; top: 50%; transform: translateY(-50%); }
-    .tm-node-3 { bottom: 8px; left: 50%; transform: translateX(-50%); }
-    .tm-node-4 { left: 10px; top: 50%; transform: translateY(-50%); }
+    .tm-node-1 { top: 0; left: 50%; transform: translateX(-50%); }
+    .tm-node-2 { right: 0; top: 50%; transform: translateY(-50%); }
+    .tm-node-3 { bottom: 0; left: 50%; transform: translateX(-50%); }
+    .tm-node-4 { left: 0; top: 50%; transform: translateY(-50%); }
 
     .tm-line {
       position: absolute;
@@ -452,31 +466,39 @@
     }
 
     .tm-line-1 {
-      width: 96px;
-      top: 70px;
+      width: 84px;
+      top: 58px;
       left: 50%;
       transform: translateX(-50%) rotate(90deg);
     }
 
     .tm-line-2 {
-      width: 118px;
+      width: 106px;
       top: 50%;
-      right: 82px;
+      right: 72px;
       transform: translateY(-50%);
     }
 
     .tm-line-3 {
-      width: 96px;
-      bottom: 70px;
+      width: 84px;
+      bottom: 58px;
       left: 50%;
       transform: translateX(-50%) rotate(90deg);
     }
 
     .tm-line-4 {
-      width: 118px;
+      width: 106px;
       top: 50%;
-      left: 82px;
+      left: 72px;
       transform: translateY(-50%);
+    }
+
+    .tm-stats {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: stretch;
     }
 
     .stats {
@@ -830,6 +852,11 @@
         min-height: 180px;
       }
 
+      .tm-graphic {
+        max-width: 280px;
+        height: 170px;
+      }
+
       .tm-core {
         width: 92px;
         height: 92px;
@@ -848,16 +875,18 @@
 
       .tm-line-1,
       .tm-line-3 {
-        width: 72px;
+        width: 62px;
       }
 
       .tm-line-2,
       .tm-line-4 {
-        width: 80px;
+        width: 74px;
       }
 
-      .tm-line-2 { right: 58px; }
-      .tm-line-4 { left: 58px; }
+      .tm-line-1 { top: 48px; }
+      .tm-line-3 { bottom: 48px; }
+      .tm-line-2 { right: 50px; }
+      .tm-line-4 { left: 50px; }
 
       .section {
         padding: 28px 0 18px;
@@ -920,18 +949,18 @@
         <aside class="hero-card" aria-label="KROYCO brand panel">
           <div class="logo-panel">
             <div class="transformation-model" aria-hidden="true">
-              <div class="tm-core">TRANSFORM</div>
-              <div class="tm-node tm-node-1">Strategy</div>
-              <div class="tm-node tm-node-2">Leadership</div>
-              <div class="tm-node tm-node-3">Adoption</div>
-              <div class="tm-node tm-node-4">Impact</div>
-              <span class="tm-line tm-line-1"></span>
-              <span class="tm-line tm-line-2"></span>
-              <span class="tm-line tm-line-3"></span>
-              <span class="tm-line tm-line-4"></span>
-            </div>
-          </div>
-          <div class="stats">
+              <div class="tm-graphic">
+                <div class="tm-core">TRANSFORM</div>
+                <div class="tm-node tm-node-1">Strategy</div>
+                <div class="tm-node tm-node-2">Leadership</div>
+                <div class="tm-node tm-node-3">Adoption</div>
+                <div class="tm-node tm-node-4">Impact</div>
+                <span class="tm-line tm-line-1"></span>
+                <span class="tm-line tm-line-2"></span>
+                <span class="tm-line tm-line-3"></span>
+                <span class="tm-line tm-line-4"></span>
+              </div>
+              <div class="tm-stats">
             <div class="stat">
               <strong>Transformation Comms</strong>
               <span>Clear communication strategies that connect enterprise transformation goals to workforce understanding and action.</span>
@@ -943,6 +972,7 @@
             <div class="stat">
               <strong>Adoption Strategy</strong>
               <span>Structured approaches that strengthen stakeholder buy-in, activation, and sustained business impact.</span>
+            </div>
             </div>
           </div>
         </aside>
@@ -1026,7 +1056,7 @@
         <div class="card contact-list">
           <div>
             <strong>Get in Touch</strong>
-            <p class="section-copy" style="margin:6px 0 0; max-width:none;">Email KROYCO and we’ll reach out to you.</p>
+          </div>
           </div>
           <div>
             <strong>Email</strong>
