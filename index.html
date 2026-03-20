@@ -268,9 +268,9 @@
     }
 
     .brand-wordmark {
-      height: 30px;
+      height: 42px;
       width: auto;
-      max-width: min(220px, 34vw);
+      max-width: 240px;
       object-fit: contain;
       display: block;
     }
@@ -546,6 +546,43 @@
     .section {
       padding: 34px 0 22px;
       scroll-margin-top: 112px;
+    }
+
+    .credibility-band {
+      padding: 8px 0 18px;
+    }
+
+    .credibility-band-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .credibility-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+      backdrop-filter: blur(10px) saturate(120%);
+      -webkit-backdrop-filter: blur(10px) saturate(120%);
+      transition: transform 0.22s ease, border-color 0.22s ease, color 0.22s ease, background 0.22s ease;
+    }
+
+    .credibility-pill:hover {
+      transform: translateY(-2px);
+      border-color: rgba(154,215,255,0.28);
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
     }
 
     .section-kicker {
@@ -1003,6 +1040,21 @@
     }
 
     @media (max-width: 640px) {
+      .credibility-band {
+        padding: 0 0 14px;
+      }
+
+      .credibility-band-inner {
+        justify-content: flex-start;
+        gap: 8px;
+      }
+
+      .credibility-pill {
+        min-height: 36px;
+        padding: 8px 12px;
+        font-size: 0.84rem;
+      }
+
       .brand-icon {
         width: 40px;
         height: 40px;
@@ -1160,6 +1212,20 @@
             </div>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <section class="credibility-band" aria-label="KROYCO sector and capability overview">
+      <div class="container credibility-band-inner">
+        <div class="credibility-pill">Transformation Communications</div>
+        <div class="credibility-pill">Executive Alignment</div>
+        <div class="credibility-pill">Change Strategy</div>
+        <div class="credibility-pill">Adoption Planning</div>
+        <div class="credibility-pill">Energy</div>
+        <div class="credibility-pill">Media</div>
+        <div class="credibility-pill">Retail</div>
+        <div class="credibility-pill">Technology</div>
+        <div class="credibility-pill">Consulting</div>
       </div>
     </section>
 
