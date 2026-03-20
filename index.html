@@ -543,7 +543,10 @@
       line-height: 1.45;
     }
 
-    .section { padding: 34px 0 22px; }
+    .section {
+      padding: 34px 0 22px;
+      scroll-margin-top: 112px;
+    }
 
     .section-title {
       margin: 0 0 10px;
@@ -630,16 +633,43 @@
     }
 
     .testimonial-shell {
-      padding: 28px;
-      min-height: 236px;
+      position: relative;
+      padding: 34px 32px 28px;
+      min-height: 260px;
       display: grid;
       gap: 22px;
       align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+    }
+
+    .testimonial-shell::before {
+      content: "“";
+      position: absolute;
+      top: 14px;
+      left: 22px;
+      font-size: 4.4rem;
+      line-height: 1;
+      color: rgba(154,215,255,0.16);
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    .testimonial-shell::after {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(154,215,255,0.45), rgba(98,240,200,0.28), transparent 72%);
+      pointer-events: none;
     }
 
     .testimonial-track {
       position: relative;
-      min-height: 138px;
+      min-height: 154px;
+      padding-top: 10px;
     }
 
     .testimonial-item {
@@ -650,7 +680,7 @@
       transition: opacity 0.42s ease, transform 0.42s ease;
       display: grid;
       align-content: start;
-      gap: 14px;
+      gap: 16px;
       pointer-events: none;
     }
 
@@ -662,29 +692,38 @@
 
     .testimonial-quote {
       margin: 0;
-      font-size: 1.14rem;
-      line-height: 1.55;
+      font-size: 1.18rem;
+      line-height: 1.6;
       color: var(--text);
-      max-width: 54ch;
+      max-width: 52ch;
+      text-wrap: balance;
+    }
+
+    .testimonial-meta {
+      display: grid;
+      gap: 2px;
     }
 
     .testimonial-meta strong {
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       letter-spacing: 0.02em;
       color: var(--accent);
       display: inline-block;
-      margin-bottom: 4px;
+      margin-bottom: 0;
     }
 
     .testimonial-meta span {
       color: var(--muted);
       font-size: 0.92rem;
+      letter-spacing: 0.01em;
     }
 
     .testimonial-dots {
       display: flex;
       gap: 10px;
       align-items: center;
+      justify-content: center;
+      margin-top: 2px;
     }
 
     .testimonial-dot {
@@ -999,7 +1038,13 @@
       .stat,
       .services .card { min-height: auto; }
 
-      .testimonial-track { min-height: 186px; }
+      .testimonial-shell::before {
+        top: 10px;
+        left: 14px;
+        font-size: 3.5rem;
+      }
+
+      .testimonial-track { min-height: 214px; }
       .testimonial-quote { font-size: 1rem; }
 
       .section { padding: 24px 0 14px; }
@@ -1187,7 +1232,7 @@
               </div>
             </article>
             <article class="testimonial-item">
-              <p class="testimonial-quote">“Alex brought immediate strategic value. He sharpened our narrative, elevated executive messaging, and helped us communicate change with more credibility and consistency.”</p>
+              <p class="testimonial-quote">“KROYCO brought immediate strategic value. Their team sharpened our narrative, elevated executive messaging, and helped us communicate change with more credibility and consistency.”</p>
               <div class="testimonial-meta">
                 <strong>Chief Communications Officer</strong><br />
                 <span>Fortune 500 Communications Services Company</span>
