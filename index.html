@@ -11,8 +11,6 @@
   <style>
     :root {
       --bg: #071018;
-      --bg-2: #0b1623;
-      --panel: rgba(255, 255, 255, 0.06);
       --panel-border: rgba(255, 255, 255, 0.11);
       --text: #f4f8fb;
       --muted: #b3c0cd;
@@ -20,9 +18,12 @@
       --accent-2: #62f0c8;
       --max: 1200px;
       --radius-xl: 30px;
-      --radius-lg: 22px;
       --radius-md: 18px;
       --shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
+      --hover-shadow: 0 24px 54px rgba(0,0,0,0.28);
+      --btn-bg: rgba(255,255,255,0.05);
+      --btn-border: rgba(154,215,255,0.24);
+      --btn-pop: linear-gradient(135deg, #9ad7ff 0%, #62f0c8 100%);
     }
 
     * { box-sizing: border-box; }
@@ -341,9 +342,7 @@
     .nav-links a:hover { color: var(--text); }
     .nav-links a:hover::after { transform: scaleX(1); }
 
-    .hero {
-      padding: 92px 0 58px;
-    }
+    .hero { padding: 92px 0 58px; }
 
     .hero-grid {
       display: grid;
@@ -353,9 +352,7 @@
     }
 
     .hero-copy,
-    .hero-card {
-      min-width: 0;
-    }
+    .hero-card { min-width: 0; }
 
     .hero-copy {
       display: flex;
@@ -409,28 +406,21 @@
       padding: 14px 22px;
       border-radius: 999px;
       font-weight: 700;
-      border: 1px solid transparent;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn-primary {
-      color: #061018;
-      background: linear-gradient(135deg, #9ad7ff 0%, #62f0c8 100%);
-      box-shadow: 0 16px 34px rgba(98, 240, 200, 0.18), 0 6px 18px rgba(154,215,255,0.18);
-    }
-
-    .btn-secondary {
-      background: linear-gradient(135deg, rgba(154,215,255,0.20), rgba(98,240,200,0.16));
-      border-color: rgba(154,215,255,0.24);
+      border: 1px solid var(--btn-border);
+      background: var(--btn-bg);
       color: var(--text);
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease, color 0.22s ease;
     }
 
-    .btn-primary:hover,
-    .btn-secondary:hover {
-      box-shadow: 0 20px 40px rgba(98,240,200,0.16), 0 10px 24px rgba(0,0,0,0.22);
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      color: #061018;
+      background: var(--btn-pop);
+      box-shadow: 0 20px 40px rgba(98,240,200,0.18), 0 10px 24px rgba(0,0,0,0.22);
+      border-color: transparent;
+      outline: none;
     }
 
     .hero-card,
@@ -441,6 +431,7 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(14px) saturate(120%);
       -webkit-backdrop-filter: blur(14px) saturate(120%);
+      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
     }
 
     .hero-card {
@@ -463,13 +454,21 @@
       pointer-events: none;
     }
 
+    .hero-card:hover,
+    .card:hover,
+    .testimonial-shell:hover {
+      transform: translateY(-6px);
+      border-color: rgba(154,215,255,0.28);
+      box-shadow: var(--hover-shadow);
+    }
+
     .hero-brand {
       position: relative;
       z-index: 1;
       display: grid;
-      gap: 16px;
-      padding: 22px;
-      min-height: 158px;
+      place-items: center;
+      padding: 26px 22px;
+      min-height: 172px;
       border-radius: 24px;
       background: rgba(6, 13, 20, 0.56);
       border: 1px solid rgba(255,255,255,0.08);
@@ -494,29 +493,19 @@
     .hero-brand-top {
       display: flex;
       align-items: center;
-      gap: 16px;
+      justify-content: center;
+      width: 100%;
       min-width: 0;
     }
 
-    .hero-brand-top img:first-child {
-      width: 58px;
-      height: 58px;
-      object-fit: contain;
-      flex: 0 0 auto;
-    }
-
-    .hero-brand-top img:last-child {
-      height: 34px;
-      width: auto;
+    .hero-brand-top img {
+      width: min(100%, 320px);
+      height: auto;
       max-width: 100%;
       object-fit: contain;
-    }
-
-    .hero-brand p {
-      margin: 0;
-      font-size: 0.97rem;
-      color: #d5e2ee;
-      max-width: 38ch;
+      display: block;
+      animation: logoGlow 4.4s ease-in-out infinite;
+      filter: drop-shadow(0 0 0 rgba(154,215,255,0));
     }
 
     .hero-stats {
@@ -553,9 +542,7 @@
       line-height: 1.45;
     }
 
-    .section {
-      padding: 34px 0 22px;
-    }
+    .section { padding: 34px 0 22px; }
 
     .section-title {
       margin: 0 0 10px;
@@ -597,14 +584,7 @@
 
     .card {
       padding: 24px;
-      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
       min-width: 0;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(154,215,255,0.28);
-      box-shadow: 0 24px 54px rgba(0,0,0,0.28);
     }
 
     .services .card { min-height: 196px; }
@@ -638,7 +618,7 @@
 
     .testimonial-shell {
       padding: 28px;
-      min-height: 220px;
+      min-height: 236px;
       display: grid;
       gap: 22px;
       align-items: center;
@@ -646,7 +626,7 @@
 
     .testimonial-track {
       position: relative;
-      min-height: 122px;
+      min-height: 138px;
     }
 
     .testimonial-item {
@@ -654,7 +634,7 @@
       inset: 0;
       opacity: 0;
       transform: translateY(10px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
+      transition: opacity 0.42s ease, transform 0.42s ease;
       display: grid;
       align-content: start;
       gap: 14px;
@@ -748,6 +728,10 @@
       font-weight: 700;
     }
 
+    .founder-link-row {
+      margin-top: 10px;
+    }
+
     .founder-copy p {
       margin: 0;
       color: var(--muted);
@@ -833,6 +817,21 @@
       100% { transform: rotate(-360deg) scale(1.02); }
     }
 
+    @keyframes logoGlow {
+      0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 rgba(154,215,255,0));
+      }
+      50% {
+        transform: scale(1.03);
+        filter: drop-shadow(0 0 18px rgba(154,215,255,0.35)) drop-shadow(0 0 28px rgba(98,240,200,0.25));
+      }
+      100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 rgba(154,215,255,0));
+      }
+    }
+
     @media (max-width: 1080px) {
       .hero-grid,
       .contact-panel,
@@ -891,7 +890,7 @@
       }
 
       .nav-links.open {
-        max-height: 260px;
+        max-height: 300px;
         opacity: 1;
         pointer-events: auto;
         margin-top: 4px;
@@ -969,14 +968,9 @@
 
       .hero-brand { padding: 18px; }
 
-      .hero-brand-top { gap: 12px; }
-
-      .hero-brand-top img:first-child {
-        width: 48px;
-        height: 48px;
+      .hero-brand-top img {
+        width: min(100%, 240px);
       }
-
-      .hero-brand-top img:last-child { height: 26px; }
 
       .hero-stats,
       .impact-grid,
@@ -985,7 +979,7 @@
       .stat,
       .services .card { min-height: auto; }
 
-      .testimonial-track { min-height: 170px; }
+      .testimonial-track { min-height: 186px; }
       .testimonial-quote { font-size: 1rem; }
 
       .section { padding: 24px 0 14px; }
@@ -1064,21 +1058,17 @@
             KROYCO helps executive teams communicate change clearly, align leadership, and accelerate adoption across enterprise transformation initiatives.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#services">Explore Services</a>
-            <a class="btn btn-secondary" href="#approach">View Approach</a>
-            <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+            <a class="btn" href="#services">Explore Services</a>
+            <a class="btn" href="#approach">View Approach</a>
+            <a class="btn" href="#contact">Get in Touch</a>
           </div>
         </div>
 
         <aside class="hero-card" aria-label="KROYCO brand panel">
           <div class="hero-brand">
-            <div class="hero-brand-top" style="justify-content:center; width:100%;">
-              <img src="./full-logo-8k.png" alt="KROYCO full logo" style="width:min(100%,320px); height:auto;" />
+            <div class="hero-brand-top">
+              <img src="./full-logo-8k.png" alt="KROYCO full logo" />
             </div>
-          </div>
-            <p>
-              Strategic advisory for transformation, executive alignment, and enterprise adoption.
-            </p>
           </div>
 
           <div class="hero-stats">
@@ -1167,7 +1157,7 @@
 
     <section class="section" id="testimonials">
       <div class="container">
-        <h2 class="section-title">What executives say</h2>
+        <h2 class="section-title">What clients say</h2>
         <p class="section-copy">
           Trusted by senior leaders navigating high-visibility transformation.
         </p>
@@ -1176,19 +1166,19 @@
             <article class="testimonial-item active">
               <p class="testimonial-quote">“KROYCO brought structure, clarity, and credibility to a complex transformation. The executive narrative landed immediately with our leadership team.”</p>
               <div class="testimonial-meta">
-                <strong>Chief Technology Officer</strong>
+                <strong>Chief Technology Officer • Global manufacturing enterprise</strong>
               </div>
             </article>
             <article class="testimonial-item">
               <p class="testimonial-quote">“Alex quickly understood the stakes, sharpened our messaging, and helped us communicate change in a way people actually trusted.”</p>
               <div class="testimonial-meta">
-                <strong>Chief Communications Officer</strong>
+                <strong>Chief Communications Officer • Fortune 500 communications services company</strong>
               </div>
             </article>
             <article class="testimonial-item">
               <p class="testimonial-quote">“KROYCO helped us connect strategy to action. Their guidance improved alignment, stakeholder confidence, and adoption across the program.”</p>
               <div class="testimonial-meta">
-                <strong>Head of Strategy Office</strong>
+                <strong>Head of Strategy • Strategic implementation partner</strong>
               </div>
             </article>
           </div>
@@ -1249,15 +1239,24 @@
             <div class="founder-header">
               <h3>Alex Kroytor</h3>
               <p class="founder-role">Founder &amp; Strategic Advisor</p>
+              <div class="founder-link-row">
+                <a class="contact-link" href="https://www.linkedin.com/in/alexkroytor/" target="_blank" rel="noopener noreferrer">Personal LinkedIn</a>
+              </div>
             </div>
             <p>
               Alex Kroytor is a transformation communications and organizational change leader with more than 15 years of experience guiding enterprise modernization initiatives across global organizations.
             </p>
             <p>
-              He helps executive teams translate complex transformation strategies into clear narratives, aligned leadership engagement, and practical adoption plans.
+              He partners with executive teams, transformation offices, and senior sponsors to turn complex strategy into clear messaging, aligned leadership action, and practical adoption plans that move initiatives forward.
             </p>
             <p>
-              Alex has supported transformation offices and executive sponsors across energy, media, retail, technology, and consulting, including programs spanning global workforces across the US, EMEA, and APAC.
+              His experience spans enterprise change programs involving technology modernization, operating model shifts, and business transformation across energy, media, retail, technology, and consulting.
+            </p>
+            <p>
+              Alex is known for helping leaders simplify complexity without diluting substance — building narratives that resonate with executives, managers, and employees alike while strengthening trust during periods of significant change.
+            </p>
+            <p>
+              His work has supported high-visibility initiatives across the US, EMEA, and APAC, including programs reaching global workforces of up to 250,000 employees.
             </p>
             <div class="impact-grid">
               <div class="impact-item">
@@ -1276,9 +1275,6 @@
                 <strong>Measured adoption impact</strong>
                 <span>Support designed to improve clarity, confidence, and sustained engagement.</span>
               </div>
-            </div>
-            <div class="cta-row">
-              <a class="btn btn-secondary" href="https://www.linkedin.com/in/alexkroytor/" target="_blank" rel="noopener noreferrer">Personal LinkedIn</a>
             </div>
           </div>
         </div>
@@ -1325,7 +1321,7 @@
       testimonialTimer = window.setInterval(() => {
         const nextIndex = (testimonialIndex + 1) % testimonialItems.length;
         showTestimonial(nextIndex);
-      }, 4500);
+      }, 7000);
     }
 
     if (testimonialItems.length && testimonialDots.length) {
